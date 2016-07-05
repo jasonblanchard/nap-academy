@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:watch": "webpack-dev-server --host 0.0.0.0 --port 8001 --content-base public --history-api-fallback --inline --hot --progress",
+    "start:watch": "webpack-dev-server --host 0.0.0.0 --port 8001 --inline --hot --progress",
     "start:dev": "http-server"
   },
   "author": "",
@@ -29,7 +29,16 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "app": "0.0.1",
+    "lodash.get": "^4.3.0",
+    "lodash.merge": "^4.4.0",
+    "normalizr": "^2.1.0",
     "react": "^15.2.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.5.2",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "uuid": "^2.0.2"
   }
 }

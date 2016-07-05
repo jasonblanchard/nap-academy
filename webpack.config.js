@@ -5,7 +5,7 @@ function path(path) {
 
 module.exports = {
   entry: {
-    app: path('src/app/index.js'),
+    app: path('src/app/client/index.js'),
   },
   output: {
     path: path('public/build'),
@@ -29,8 +29,8 @@ module.exports = {
         ],
       },
     ],
-    resolve: {
-      extensions: ['', '.js', '.jsx'],
-    },
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
 };
