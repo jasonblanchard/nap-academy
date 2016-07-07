@@ -1,7 +1,7 @@
 import { normalize, arrayOf } from 'normalizr';
 
 import api from 'app/api';
-import * as schema from 'app/schema';
+import schema from 'app/schema';
 
 function loadEntities(entity, entities) {
   return {
@@ -10,16 +10,16 @@ function loadEntities(entity, entities) {
   };
 }
 
-export function fetchEntity(entity, id = null) {
+export function fetchEntity(entityConstant, id = null) {
   return function (dispatch) {
-    api.get(entity, id).then(response => {
+    api.get(entityConstant, id).then(response => {
       let normedResponse = null;
       if (Array.isArray(response)) {
-        normedResponse = normalize(response, arrayOf(schema[entity]));
+        normedResponse = normalize(response, arrayOf(schema[entityConstant]));
       } else {
-        normedResponse = normalize(response, schema[entity]);
+        normedResponse = normalize(response, schema[entityConstant]);
       }
-      dispatch(loadEntities(entity, normedResponse.entities));
+      dispatch(loadEntities(entityConstant, normedResponse.entities));
     });
   };
 }

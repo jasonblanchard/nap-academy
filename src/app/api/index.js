@@ -1,9 +1,11 @@
 import courses from './courseFixtures';
 import topics from './topicsFixtures';
 
+import * as entityConstants from 'app/schema';
+
 const entities = {
-  courses,
-  topics,
+  [entityConstants.COURSES]: courses,
+  [entityConstants.TOPICS]: topics,
 };
 
 export default {

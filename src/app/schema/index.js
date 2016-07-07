@@ -1,8 +1,15 @@
 import { Schema, arrayOf } from 'normalizr';
 
-export const courses = new Schema('courses');
-export const topics = new Schema('topics');
+export const COURSES = 'courses';
+export const TOPICS = 'topics';
 
-courses.define({
-  topics: arrayOf(topics),
+const schema = {
+  [COURSES]: new Schema(COURSES),
+  [TOPICS]: new Schema(TOPICS),
+};
+
+schema[COURSES].define({
+  topics: arrayOf(schema[TOPICS]),
 });
+
+export default schema;

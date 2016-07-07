@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 
 import * as actions from 'app/actions';
+import * as entityConstants from 'app/schema';
 import * as selectors from 'app/reducers';
 import CoursesPage from 'app/pages/CoursesPage';
 
@@ -12,7 +13,7 @@ class CoursesPageHandler extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEntity('courses');
+    this.props.fetchEntity(entityConstants.COURSES);
   }
 }
 
@@ -23,7 +24,7 @@ CoursesPageHandler.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    courses: selectors.getEntities(state, 'courses'),
+    courses: selectors.getEntities(state, entityConstants.COURSES),
   };
 }
 
