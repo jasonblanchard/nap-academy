@@ -10,12 +10,12 @@ function entities(state = {}, action) {
   }
 }
 
-export function getEntities(entity, ids, state = {}) {
-  if (Array.isArray(ids)) {
-    return ids.map(id => state[entity][id]);
+export function getEntities(state = {}, entity, id) {
+  if (Array.isArray(id)) {
+    return id.map(entityId => state[entity][entityId]);
   }
-  if (ids) {
-    return get(state[entity], ids);
+  if (id) {
+    return get(state[entity], id);
   }
   return state[entity];
 }

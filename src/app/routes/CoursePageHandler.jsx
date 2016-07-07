@@ -9,7 +9,7 @@ import CoursePage from 'app/pages/CoursePage';
 class CoursePageHandler extends Component {
   render() {
     if (this.props.course) {
-      return <CoursePage course={this.props.course} />;
+      return <CoursePage course={this.props.course} topics={this.props.topics} />;
     }
     return <div>loading...</div>;
   }
@@ -22,12 +22,21 @@ class CoursePageHandler extends Component {
 CoursePageHandler.propTypes = {
   course: PropTypes.object,
   fetchEntity: PropTypes.func,
-  params: PropTypes.object,
+  params: PropTypes.shape({
+    courseId: PropTypes.string,
+  }),
+  topics: PropTypes.array,
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  course: selectors.getEntities('courses', ownProps.params.courseId, state),
-});
+const mapStateToProps = (state, ownProps) => {
+  const course = selectors.getEntities(state, 'courses', ownProps.params.courseId);
+  const topics = course ? selectors.getEntities(state, 'topics', course.topics) : [];
+
+  return {
+    course,
+    topics,
+  };
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);

@@ -6,6 +6,6 @@ const app = combineReducers({
   entities,
 });
 
-export const getEntities = (entity, ids, state) => entitySelectors.getEntities(entity, ids, state.entities);
+export const getEntities = (state, ...rest) => entitySelectors.getEntities(state.entities, ...rest);
 
 export default app;

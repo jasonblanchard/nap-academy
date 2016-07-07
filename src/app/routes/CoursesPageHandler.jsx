@@ -23,7 +23,7 @@ CoursesPageHandler.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    courses: selectors.getEntities('courses', null, state),
+    courses: selectors.getEntities(state, 'courses'),
   };
 }
 

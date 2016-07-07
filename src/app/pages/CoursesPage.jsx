@@ -11,7 +11,7 @@ class CoursesPage extends Component {
     return (
       <div>
         <h2>Courses</h2>
-        {Object.keys(this.props.courses).map(this.renderCourse)}
+        {Object.keys(this.props.courses).sort().map(this.renderCourse)}
       </div>
     );
   }
