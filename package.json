@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "app": "0.0.1",
+    "denormalizr": "^0.3.0",
     "lodash.get": "^4.3.0",
     "lodash.merge": "^4.4.0",
     "normalizr": "^2.1.0",
