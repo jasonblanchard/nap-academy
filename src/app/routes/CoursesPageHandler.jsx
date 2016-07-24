@@ -13,7 +13,7 @@ class CoursesPageHandler extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEntity(entityConstants.COURSES);
+    this.props.fetchEntity(entityConstants.COURSE);
   }
 }
 
@@ -24,7 +24,7 @@ CoursesPageHandler.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    courses: selectors.getEntities(state, entityConstants.COURSES),
+    courses: selectors.getEntities(state, entityConstants.COURSE),
   };
 }
 

@@ -1,21 +1,21 @@
 import { Schema, arrayOf } from 'normalizr';
 
-export const COURSES = 'courses';
-export const TOPICS = 'topics';
-export const LESSONS = 'lessons';
+export const COURSE = 'course';
+export const TOPIC = 'topic';
+export const LESSON = 'lesson';
 
 const schema = {
-  [COURSES]: new Schema(COURSES),
-  [TOPICS]: new Schema(TOPICS),
-  [LESSONS]: new Schema(LESSONS),
+  [COURSE]: new Schema(COURSE),
+  [TOPIC]: new Schema(TOPIC),
+  [LESSON]: new Schema(LESSON),
 };
 
-schema[COURSES].define({
-  topics: arrayOf(schema[TOPICS]),
+schema[COURSE].define({
+  topics: arrayOf(schema[TOPIC]),
 });
 
-schema[TOPICS].define({
-  lessons: arrayOf(schema[LESSONS]),
+schema[TOPIC].define({
+  lessons: arrayOf(schema[LESSON]),
 });
 
 export default schema;

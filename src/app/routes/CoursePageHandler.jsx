@@ -16,7 +16,7 @@ class CoursePageHandler extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEntity(entityConstants.COURSES, this.props.params.courseId);
+    this.props.fetchEntity(entityConstants.COURSE, this.props.params.courseId);
   }
 }
 
@@ -30,7 +30,7 @@ CoursePageHandler.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  course: selectors.getEntities(state, entityConstants.COURSES, ownProps.params.courseId),
+  course: selectors.getEntities(state, entityConstants.COURSE, ownProps.params.courseId),
 });
 
 function mapDispatchToProps(dispatch) {
