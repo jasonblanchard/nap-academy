@@ -2,9 +2,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 
-import * as actions from 'app/actions';
-import * as entityConstants from 'app/schema';
-import * as selectors from 'app/reducers';
+import * as actions from 'app/state/actions';
+import * as entityConstants from 'app/state/schema';
+import * as selectors from 'app/state/reducers';
 import CoursesPage from 'app/pages/CoursesPage';
 
 class CoursesPageHandler extends Component {

@@ -2,7 +2,7 @@ import courses from './courseFixtures';
 import topics from './topicsFixtures';
 import lessons from './lessonsFixtures';
 
-import * as entityConstants from 'app/schema';
+import * as entityConstants from 'app/state/schema';
 
 const entities = {
   [entityConstants.COURSE]: courses,

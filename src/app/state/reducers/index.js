@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import entities, * as entitySelectors from 'app/reducers/entities';
+import entities, * as entitySelectors from 'app/state/reducers/entities';
 
 const app = combineReducers({
   entities,

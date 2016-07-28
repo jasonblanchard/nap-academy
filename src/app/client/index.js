@@ -3,7 +3,7 @@ import { Router, hashHistory } from 'react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import configureStore from 'app/configureStore';
+import configureStore from 'app/state/configureStore';
 import routes from 'app/routes/index';
 
 const store = configureStore();

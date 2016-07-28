@@ -2,7 +2,7 @@ import { denormalize } from 'denormalizr';
 import get from 'lodash.get';
 import merge from 'lodash.merge';
 
-import schema from 'app/schema';
+import schema from 'app/state/schema';
 
 function entities(state = {}, action) {
   switch (action.type) {

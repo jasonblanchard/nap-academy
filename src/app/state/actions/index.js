@@ -1,7 +1,7 @@
 import { normalize, arrayOf } from 'normalizr';
 
 import api from 'app/api';
-import schema from 'app/schema';
+import schema from 'app/state/schema';
 
 function loadEntities(entity, entities) {
   return {
