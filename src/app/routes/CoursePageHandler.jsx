@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
+import models from 'app/state/models';
 
 import * as actions from 'app/state/actions';
 import * as entityConstants from 'app/state/schema';
@@ -17,12 +18,14 @@ class CoursePageHandler extends Component {
 
   componentDidMount() {
     this.props.fetchEntity(entityConstants.COURSE, this.props.params.courseId);
+    this.props.fetchCourse(this.props.params.courseId);
   }
 }
 
 CoursePageHandler.propTypes = {
   course: PropTypes.object,
   fetchEntity: PropTypes.func,
+  fetchCourse: PropTypes.func,
   params: PropTypes.shape({
     courseId: PropTypes.string,
   }),
@@ -34,7 +37,10 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({
+    fetchEntity: actions.fetchEntity,
+    fetchCourse: models.Course.fetch,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursePageHandler);

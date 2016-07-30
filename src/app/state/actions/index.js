@@ -10,6 +10,13 @@ function loadEntities(entity, entities) {
   };
 }
 
+export function loadModels(entities) {
+  return {
+    type: 'LOAD_MODELS',
+    payload: entities,
+  };
+}
+
 export function fetchEntity(entityConstant, id = null) {
   return function (dispatch) {
     api.get(entityConstant, id).then(response => {
