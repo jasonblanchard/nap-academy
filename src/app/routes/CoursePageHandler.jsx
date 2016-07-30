@@ -6,9 +6,11 @@ import * as actions from 'app/state/actions';
 import * as entityConstants from 'app/state/schema';
 import * as selectors from 'app/state/reducers';
 import CoursePage from 'app/pages/CoursePage';
+import * as modelSelectors from 'app/state/selectors';
 
 class CoursePageHandler extends Component {
   render() {
+    console.log(this.props.course);
     if (this.props.course) {
       return <CoursePage course={this.props.course} />;
     }
@@ -30,7 +32,8 @@ CoursePageHandler.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  course: selectors.getEntities(state, entityConstants.COURSE, ownProps.params.courseId),
+  // course: selectors.getEntities(state, entityConstants.COURSE, ownProps.params.courseId),
+  course: modelSelectors.getCourse(state),
 });
 
 function mapDispatchToProps(dispatch) {
