@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import { normalize, arrayOf } from 'normalizr';
-import api from 'app/api';
-import { loadModels } from 'app/state/actions';
-import merge from 'lodash.merge';
 import { denormalize } from 'denormalizr';
+import { normalize, arrayOf } from 'normalizr';
 import get from 'lodash.get';
+import merge from 'lodash.merge';
 
+import { loadModels } from 'app/state/actions';
+import api from 'app/api';
 import schema from 'app/state/models/schema';
 
 class Course {

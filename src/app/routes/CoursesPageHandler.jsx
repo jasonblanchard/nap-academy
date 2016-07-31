@@ -2,10 +2,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 
-import * as actions from 'app/state/actions';
-import * as entityConstants from 'app/state/schema';
-import * as selectors from 'app/state/reducers';
 import CoursesPage from 'app/pages/CoursesPage';
+import models from 'app/state/models';
 
 class CoursesPageHandler extends Component {
   render() {
@@ -13,23 +11,25 @@ class CoursesPageHandler extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEntity(entityConstants.COURSE);
+    this.props.fetchCourse();
   }
 }
 
 CoursesPageHandler.propTypes = {
   courses: PropTypes.object,
-  fetchEntity: PropTypes.func,
+  fetchCourse: PropTypes.func,
 };
 
 function mapStateToProps(state) {
   return {
-    courses: selectors.getEntities(state, entityConstants.COURSE),
+    courses: models.Course.get(state),
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actions, dispatch);
+  return bindActionCreators({
+    fetchCourse: models.Course.fetch,
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoursesPageHandler);

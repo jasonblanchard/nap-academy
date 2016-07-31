@@ -1,9 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
-import models from 'app/state/models';
 
 import CoursePage from 'app/pages/CoursePage';
+import models from 'app/state/models';
 
 class CoursePageHandler extends Component {
   render() {
@@ -20,7 +20,6 @@ class CoursePageHandler extends Component {
 
 CoursePageHandler.propTypes = {
   course: PropTypes.object,
-  fetchEntity: PropTypes.func,
   fetchCourse: PropTypes.func,
   params: PropTypes.shape({
     courseId: PropTypes.string,
