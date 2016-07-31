@@ -3,6 +3,8 @@ import { normalize, arrayOf } from 'normalizr';
 import api from 'app/api';
 import { loadModels } from 'app/state/actions';
 import merge from 'lodash.merge';
+import { denormalize } from 'denormalizr';
+import get from 'lodash.get';
 
 import schema from 'app/state/models/schema';
 
@@ -42,6 +44,19 @@ class Course {
         dispatch(loadModels(normedResponse));
       });
     };
+  }
+
+  static get(state = {}, id) {
+    const modelSelector = state.models.Course.entities; // TODO: Centralize this somehow.
+    // const entities = Object.keys(state.models).map(model => state.models[model].entities);
+    const entities = Object.keys(state.models).reduce((memo, modelKey) => {
+      memo[modelKey] = state.models[modelKey].entities
+      return memo;
+    }, {});
+    if (id) {
+      return denormalize(get(modelSelector, id), entities, schema.Course);
+    }
+    return denormalize(modelSelector, entities, schema.Course);
   }
 
 }

@@ -5,7 +5,6 @@ import models from 'app/state/models';
 
 import * as actions from 'app/state/actions';
 import * as entityConstants from 'app/state/schema';
-import * as selectors from 'app/state/reducers';
 import CoursePage from 'app/pages/CoursePage';
 
 class CoursePageHandler extends Component {
@@ -33,7 +32,7 @@ CoursePageHandler.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  course: selectors.getEntities(state, entityConstants.COURSE, ownProps.params.courseId),
+  course: models.Course.get(state, ownProps.params.courseId),
 });
 
 function mapDispatchToProps(dispatch) {
