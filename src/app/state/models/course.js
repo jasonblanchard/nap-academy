@@ -48,11 +48,11 @@ class Course {
 
   static get(state = {}, id) {
     const modelSelector = state.models.Course.entities; // TODO: Centralize this somehow.
-    // const entities = Object.keys(state.models).map(model => state.models[model].entities);
     const entities = Object.keys(state.models).reduce((memo, modelKey) => {
-      memo[modelKey] = state.models[modelKey].entities
-      return memo;
-    }, {});
+      const tmp = memo;
+      tmp[modelKey] = state.models[modelKey].entities;
+      return tmp;
+    }, {}); // YUCK
     if (id) {
       return denormalize(get(modelSelector, id), entities, schema.Course);
     }

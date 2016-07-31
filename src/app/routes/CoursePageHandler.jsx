@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 import models from 'app/state/models';
 
-import * as actions from 'app/state/actions';
-import * as entityConstants from 'app/state/schema';
 import CoursePage from 'app/pages/CoursePage';
 
 class CoursePageHandler extends Component {
@@ -16,7 +14,6 @@ class CoursePageHandler extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchEntity(entityConstants.COURSE, this.props.params.courseId);
     this.props.fetchCourse(this.props.params.courseId);
   }
 }
@@ -37,7 +34,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchEntity: actions.fetchEntity,
     fetchCourse: models.Course.fetch,
   }, dispatch);
 }
