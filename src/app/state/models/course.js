@@ -8,6 +8,7 @@ import { loadModels } from 'app/state/actions';
 import api from 'app/api';
 import schema from 'app/state/models/schema';
 
+// TODO: Does this need to be a class at all? Plain object? Individual exports?
 class Course {
   static reducer() {
     return combineReducers({
@@ -52,7 +53,7 @@ class Course {
       const tmp = memo;
       tmp[modelKey] = state.models[modelKey].entities;
       return tmp;
-    }, {}); // YUCK
+    }, {}); // TODO: YUCK. Denormalize does not like this entity shape.
     if (id) {
       return denormalize(get(modelSelector, id), entities, schema.Course);
     }
